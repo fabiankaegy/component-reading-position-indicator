@@ -27,6 +27,7 @@ export default class ReadingPositionIndicator {
 			scrollStart: null,
 			scrolling: null,
 			scrollEnd: null,
+			showPercentage: false,
 		};
 
 		if ( ! elementSelector || 'string' !== typeof elementSelector ) {
@@ -88,6 +89,10 @@ export default class ReadingPositionIndicator {
 	handleScroll() {
 
 		this.$readingPositionIndicator.setAttribute( 'value', this.percentage );
+
+		if ( this.settings.showPercentage ) {
+			this.$readingPositionIndicator.innerText = `${this.percentage.toFixed( 0 )}%`;
+		}
 
 		// check wether is in scroll area based on the percentage
 		if ( 0 < this.percentage && 100 > this.percentage ) {
