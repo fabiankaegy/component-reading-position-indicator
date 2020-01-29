@@ -2,9 +2,9 @@
   "name": "@10up/component-reading-position-indicator",
   "version": "1.0.0",
   "author": "10up",
-  "description": "Accessible readingPositionIndicator component.",
-  "main": "./src/readingPositionIndicator.js",
-  "style": "./dist/readingPositionIndicator.css",
+  "description": "Accessible reading position indicator component.",
+  "main": "./src/reading-position-indcator.js",
+  "style": "./dist/reading-position-indcator.css",
   "scripts": {
     "start": "npm install && npm run build",
     "build": "webpack",
