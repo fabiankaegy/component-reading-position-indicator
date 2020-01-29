@@ -83,7 +83,7 @@ export default class ReadingPositionIndicator {
 	}
 
 	/**
-	 * Handles the scroll events
+	 * handler for the scroll event
 	 */
 	handleScroll() {
 
@@ -92,7 +92,7 @@ export default class ReadingPositionIndicator {
 		// check wether is in scroll area based on the percentage
 		if ( 0 < this.percentage && 100 > this.percentage ) {
 
-			// call the callback for scrollStart only on transitioning from inScrollArea false to true
+			// call the callback for scrollStart only on transitioning into the scroll area
 			if ( ! this.inScrollArea ) {
 				/**
 				 * Called when the scroll area comes into view.
@@ -108,7 +108,7 @@ export default class ReadingPositionIndicator {
 		// check wether is outside scroll area based on the percentage
 		if ( 0 === this.percentage || 100 === this.percentage ) {
 
-			// call the callback for scrollEnd only on transitioning from inScrollArea true to false
+			// call the callback for scrollEnd only on transitioning out of the scroll area
 			if ( this.inScrollArea ) {
 				/**
 				 * Called when the scroll area leaves the view.
@@ -121,11 +121,11 @@ export default class ReadingPositionIndicator {
 			this.inScrollArea = false;
 		}
 
-		// call the callback for scrolling only while inside the scrollArea
+		// call the callback for scrolling only while inside the scroll area
 		if ( this.inScrollArea ) {
 
 			/**
-			 * Called on every update while inside the scroll area.
+			 * Called on every scroll event while inside the scroll area.
 			 *
 			 * @callback scrolling
 			 */
@@ -137,7 +137,7 @@ export default class ReadingPositionIndicator {
 	}
 
 	/**
-	 * calculates the maximal value
+	 * calculates the position of the end from the scroll area
 	 */
 	get max() {
 
@@ -163,11 +163,13 @@ export default class ReadingPositionIndicator {
 
 		}
 
+		// accounting for the fact that the scroll position is measured at the
+		// top of the page and the scrollAreaHeight might never get there
 		return scrollAreaHeight - windowHeight - this.min;
 	}
 
 	/**
-	 * calculates the minimal value for the progress bar
+	 * calculates the position of the start from the scroll area
 	 */
 	get min() {
 
@@ -180,7 +182,7 @@ export default class ReadingPositionIndicator {
 	}
 
 	/**
-	 * calculates the current percentage
+	 * calculates the current percentage thats already been scrolled of the scroll area
 	 */
 	get percentage() {
 		const value = Math.max( 0, window.scrollY - this.min );
