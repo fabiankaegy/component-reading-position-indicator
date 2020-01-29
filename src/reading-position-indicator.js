@@ -121,10 +121,12 @@ export default class ReadingPositionIndicator {
 			this.inScrollArea = false;
 		}
 
+		// call the callback for scrolling only while inside the scrollArea
 		if ( this.inScrollArea ) {
 
 			/**
-			 * Called after the readingPositionIndicator is initialized on page load.
+			 * Called on every update while inside the scroll area.
+			 *
 			 * @callback scrolling
 			 */
 			if ( this.settings.scrolling && 'function' === typeof this.settings.scrolling ) {
