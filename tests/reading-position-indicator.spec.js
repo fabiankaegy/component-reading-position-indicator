@@ -30,7 +30,6 @@ describe( 'General Tests', () => {
 		await page.goto( APP );
 
 		const progressElement = await page.$('progress');
-		console.log( progressElement );
 		const percentageHandle = await progressElement.getProperty( 'value' );
 		const percentage = await percentageHandle.jsonValue();
 
@@ -43,13 +42,15 @@ describe( 'General Tests', () => {
 		// Visit the page in headless Chrome
 		await page.goto( APP );
 
+
 		// scroll all the way to the bottom
 		await page.evaluate(() => {
 			window.scrollBy( 0, document.body.scrollHeight )
 		})
 
+		await page.waitFor('#scrollEnd', {visible: true});
+
 		const progressElement = await page.$('progress');
-		console.log( progressElement );
 		const percentageHandle = await progressElement.getProperty( 'value' );
 		const percentage = await percentageHandle.jsonValue();
 
