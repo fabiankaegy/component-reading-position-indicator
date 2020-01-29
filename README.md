@@ -1,30 +1,28 @@
-# 10up Accordion component
+# 10up Reading Position Indicator component
 
 [![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status][cli-img]][cli-url]
 
-[cli-img]: https://travis-ci.org/10up/component-accordion.svg?branch=master
-[cli-url]: https://travis-ci.org/10up/component-accordion
-
-The most important thing to remember when implementing this accordion is that the trigger (the element you click to open a drawer) needs to be a focusable element. In this case, we’re using a button and applying all the ARIA attributes with JavaScript. If JavaScript isn’t enabled, each drawer will be in its natural open state.
+[cli-img]: https://travis-ci.org/10up/component-reading-position-indicator.svg?branch=master
+[cli-url]: https://travis-ci.org/10up/component-reading-position-indicator
 
 ## Installation
 
 ### NPM
-`npm install --save @10up/component-accordion`
+`npm install --save @10up/component-reading-position-indicator`
 
 ### Standalone
-Clone this repo and import `accordion.js` and `accordion.css` from the `dist/` directory.
+Clone this repo and import `reading-position-indicator.js` and `reading-position-indicator.css` from the `dist/` directory.
 
 ## API
 
-This component accepts two arguments, the selector for the accordion container and an object containing optional callbacks.
+This component accepts two arguments, the selector for the reading-position-indicator container and an object containing optional callbacks.
 
 ### Callbacks
 
-- `onCreate`: Called after the accordion is initialized on page load
-- `onOpen`: Called when an accordion item is opened
-- `onClose`: Called when an accordion item is closed
-- `onToggle`: Called when an accordion item is toggled
+- `onCreate`: Called after the reading-position-indicator is initialized on page load
+- `scrollStart`: Called when the scrollable are enters the visible area
+- `scrollEnd`: Called when the scrollable are leaves the visible area
+- `scrolling`: Called when on scroll events while the scrollable area is in the visible area
 
 ## Usage
 
@@ -33,18 +31,7 @@ This component accepts two arguments, the selector for the accordion container a
 This is the markup template expected by the component.
 
 ```html
-<div class="accordion">
-	<button class="accordion-header" type="button">Accordion Header</button>
-	<div class="accordion-content">
-		<h2 class="accordion-label">Accordion Heading</h2>
-		<p>Here the content of 1st tab.</p>
-	</div>
-	<button class="accordion-header" type="button">Accordion Header</button>
-	<div class="accordion-content">
-		<h2 class="accordion-label">Accordion Heading</h2>
-		<p>Here the content of 2nd tab.</p>
-	</div>
-</div>
+<progress class="reading-position-indicator"></progress>
 ```
 
 ### CSS
@@ -52,53 +39,53 @@ This is the markup template expected by the component.
 The styles can be imported into your existing codebase by using PostCSS imports, or by including the standalone CSS file in your project.
 
 #### PostCSS Imports
-`@import '@10up/component-accordion';`
+`@import '@10up/component-reading-position-indicator';`
 
 #### Standalone
-Include the `accordion.css` file from the `dist/` directory.
+Include the `reading-position-indicator.css` file from the `dist/` directory.
 
 ### JavaScript
 
-Create a new instance by supplying the selector to use for the accordion and an object containing any necessary callback functions.
+Create a new instance by supplying the selector to use for the reading-position-indicator and an object containing any necessary callback functions.
 
 #### NPM
 
 ```javascript
-import Accordion from '@10up/component-accordion';
+import ReadingPositionIndicator from '@10up/component-reading-position-indicator';
 
-new Accordion( '.accordion', {
+new ReadingPositionIndicator( '.reading-position-indicator', {
 	onCreate: function() {
 		console.log( 'onCreate callback' );
 	},
-	onOpen: function() {
-		console.log( 'onOpen callback' );
+	scrollStart: function( percentage ) {
+		console.log( 'scrollStart callback', percentage );
 	},
-	onClose: function() {
-		console.log( 'onClose callback' );
+	scrollEnd: function( percentage ) {
+		console.log( 'scrollEnd callback', percentage );
 	},
-	onToggle: function() {
-		console.log( 'onToggle callback' );
+	scrolling: function( percentage ) {
+		console.log( 'scrolling callback' );
 	}
 } );
 ```
 
 #### Standalone
 
-Include the `accordion.js` file from the `dist/` directory and access the component from the gobal `TenUp` object.
+Include the `reading-position-indicator.js` file from the `dist/` directory and access the component from the gobal `TenUp` object.
 
 ```javascript
-let myAccordion = new TenUp.accordion( '.accordion', {
+let myReadingPositionIndicator = new TenUp.readingPositionIndicator( '.reading-position-indicator', {
 	onCreate: function() {
 		console.log( 'onCreate callback' );
 	},
-	onOpen: function() {
-		console.log( 'onOpen callback' );
+	scrollStart: function( percentage ) {
+		console.log( 'scrollStart callback', percentage );
 	},
-	onClose: function() {
-		console.log( 'onClose callback' );
+	scrollEnd: function( percentage ) {
+		console.log( 'scrollEnd callback', percentage );
 	},
-	onToggle: function() {
-		console.log( 'onToggle callback' );
+	scrolling: function( percentage ) {
+		console.log( 'scrolling callback' );
 	}
 } );
 ```
