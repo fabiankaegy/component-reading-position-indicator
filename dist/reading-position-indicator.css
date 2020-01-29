@@ -1,5 +1,3 @@
-@import 'assets/core.css';
-
 .reading-position-indicator {
 	 /* Positioning */
   position: fixed;
@@ -24,22 +22,21 @@
   /* Progress bar value for IE10+ */
   color: #A30811;
 }
-
 progress::-webkit-progress-bar {
   background-color: transparent;
 }
-
 progress::-webkit-progress-value {
   background-color: #A30811;
 }
-
 progress::-moz-progress-bar {
   background-color: #A30811;
 }
-
 .position-point {
 	display: block;
 	height: 5px;
 	background: green;
 	width: 100%;
 }
+
+
+/*# sourceMappingURL=reading-position-indicator.css.map*/

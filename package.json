@@ -1,10 +1,10 @@
 {
-  "name": "@10up/component-accordion",
-  "version": "1.0.6",
+  "name": "@10up/component-reading-position-indicator",
+  "version": "1.0.0",
   "author": "10up",
-  "description": "Accessible accordion component.",
-  "main": "./src/accordion.js",
-  "style": "./dist/accordion.css",
+  "description": "Accessible readingPositionIndicator component.",
+  "main": "./src/readingPositionIndicator.js",
+  "style": "./dist/readingPositionIndicator.css",
   "scripts": {
     "start": "npm install && npm run build",
     "build": "webpack",
@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/10up/component-accordion.git"
+    "url": "git+https://github.com/10up/component-reading-position-indicator.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/10up/component-accordion/issues"
+    "url": "https://github.com/10up/component-reading-position-indicator/issues"
   },
-  "homepage": "https://github.com/10up/component-accordion#readme",
+  "homepage": "https://github.com/10up/component-reading-position-indicator#readme",
   "devDependencies": {
     "@10up/eslint-config": "^1.0.9",
     "@babel/cli": "^7.2.3",

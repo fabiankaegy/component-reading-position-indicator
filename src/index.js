@@ -1,7 +1,7 @@
-import Accordion from './accordion';
+import ReadingPositionIndicator from './reading-position-indicator';
 
 if ( 'object' !== typeof window.TenUp ) {
 	window.TenUp = {};
 }
 
-window.TenUp.accordion = Accordion;
+window.TenUp.readingPositionIndicator = ReadingPositionIndicator;
