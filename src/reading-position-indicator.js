@@ -67,7 +67,7 @@ export default class ReadingPositionIndicator {
 	/**
 	 * Setup the reading position indicator
 	 *
-	 * @param {HTMLDomNode} element
+	 * @param {HTMLElement} element
 	 */
 	setupReadingPositionIndicator( element ) {
 
