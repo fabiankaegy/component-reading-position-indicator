@@ -48,6 +48,7 @@ export default class ReadingPositionIndicator {
 		// Settings
 		this.settings = Object.assign( {}, defaults, options );
 
+		this.updating = false;
 		this.$startElement = document.querySelector( this.settings.startElement );
 		this.$endElement = document.querySelector( this.settings.endElement );
 		this.inScrollArea = false;
@@ -78,7 +79,25 @@ export default class ReadingPositionIndicator {
 
 		element.setAttribute( 'max', 100 );
 
-		document.addEventListener( 'scroll', this.handleScroll.bind( this ) );
+		document.addEventListener( 'scroll', this.debouncedHandleScroll.bind( this ) );
+
+	}
+
+	/**
+	 * debounced handler for the scroll event
+	 */
+	debouncedHandleScroll() {
+
+		// bail out if page is still updating
+		if ( this.updating ) {
+			return;
+		}
+
+		// schedule our handleScroll method
+		requestAnimationFrame( this.handleScroll.bind( this ) );
+
+		// telling the components that it is currently updating
+		this.updating = true;
 
 	}
 
@@ -133,6 +152,9 @@ export default class ReadingPositionIndicator {
 				this.settings.scrolling( this.percentage );
 			}
 		}
+
+		// telling component that updating is done
+		this.updating = false;
 
 	}
 
