@@ -79,7 +79,10 @@ export default class ReadingPositionIndicator {
 
 		element.setAttribute( 'max', 100 );
 
+		// add event listeners for scroll, resize and orientationchange because they all affect the percentage
 		document.addEventListener( 'scroll', this.debouncedHandleScroll.bind( this ) );
+		window.addEventListener( 'resize', this.debouncedHandleScroll.bind( this ) );
+		window.addEventListener( 'orientationchange', this.debouncedHandleScroll.bind( this ) );
 
 	}
 
