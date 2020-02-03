@@ -77,6 +77,7 @@ export default class ReadingPositionIndicator {
 			element.setAttribute( 'role', 'progressbar' );
 		}
 
+		// set the maximum value to 100 because well be passing the value in as a percentage
 		element.setAttribute( 'max', 100 );
 
 		// add event listeners for scroll, resize and orientationchange because they all affect the percentage
@@ -109,6 +110,7 @@ export default class ReadingPositionIndicator {
 	 */
 	handleScroll() {
 
+		// setting the value of the progress bar to the current percentage
 		this.$readingPositionIndicator.setAttribute( 'value', this.percentage );
 
 		// check wether is in scroll area based on the percentage
@@ -170,14 +172,18 @@ export default class ReadingPositionIndicator {
 		const html = document.documentElement;
 		const windowHeight = window.innerHeight;
 
+		// initialize value with a default height of 0
 		let scrollAreaHeight = 0;
 
+		// check wether an endElement is present and a valid DOM Node
 		if ( this.$endElement && this.$endElement instanceof HTMLElement ) {
 
+			// setting the scroll area height to the top ofset of the end element
 			scrollAreaHeight = this.$endElement.offsetTop;
 
 		} else {
 
+			// setting the scroll area height to the full page height
 			scrollAreaHeight = Math.max(
 				body.scrollHeight,
 				body.offsetHeight,
@@ -198,8 +204,12 @@ export default class ReadingPositionIndicator {
 	 */
 	get min() {
 
+		// check wether an startElement is present and a valid DOM Node
 		if ( this.$startElement && this.$startElement instanceof HTMLElement ) {
+
+			// returning the top ofset of the element, making sure the value can't be below zero
 			return Math.max( 0, this.$startElement.offsetTop );
+
 		}
 
 		return 0;
@@ -210,7 +220,11 @@ export default class ReadingPositionIndicator {
 	 * calculates the current percentage thats already been scrolled of the scroll area
 	 */
 	get percentage() {
+
+		// setting the value making sure that it can't be below zero
 		const value = Math.max( 0, window.scrollY - this.min );
+
+		// making sure the value can't be above 100
 		return Math.min( 100, value * 100 / this.max );
 	}
 
