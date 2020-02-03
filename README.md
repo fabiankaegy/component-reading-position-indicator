@@ -64,7 +64,7 @@ new ReadingPositionIndicator( '.reading-position-indicator', {
 		console.log( 'scrollEnd callback', percentage );
 	},
 	scrolling: function( percentage ) {
-		console.log( 'scrolling callback' );
+		console.log( 'scrolling callback', percentage );
 	}
 } );
 ```
@@ -85,7 +85,7 @@ let myReadingPositionIndicator = new TenUp.readingPositionIndicator( '.reading-p
 		console.log( 'scrollEnd callback', percentage );
 	},
 	scrolling: function( percentage ) {
-		console.log( 'scrolling callback' );
+		console.log( 'scrolling callback', percentage );
 	}
 } );
 ```
