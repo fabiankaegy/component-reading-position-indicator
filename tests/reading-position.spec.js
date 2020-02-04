@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-const APP = 'https://fabiankaegy.github.io/component-reading-position-indicator/demo/demo-2.html';
+const APP = 'https://fabiankaegy.github.io/component-reading-position-indicator/demo/test-demo.html';
 const width = 1440;
 const height = 860;
 
@@ -57,6 +57,34 @@ describe( 'General Tests', () => {
 		expect( percentage ).toBe( 100 );
 
 	} );
+
+	test( 'calls callbacks', async () => {
+
+		const showBox = jest.fn();
+		const hideBox = jest.fn();
+		const onCreate = jest.fn();
+		const updatePercentage = jest.fn();
+
+		// Visit the page in headless Chrome
+		await page.goto( APP );
+
+		await page.waitFor( '#scrollEnd', { visible: true } );
+
+		await page.evaluate( () => {
+			// initiates the reading position indicator
+			let myReadingPosition = new TenUp.readingPosition( '.reading-position', {
+				onCreate: onCreate,
+				scrollStart: showBox,
+				scrolling: updatePercentage,
+				scrollEnd: hideBox,
+				startElement: '#scrollStart',
+				endElement: '#scrollEnd',
+			} );
+		} );
+
+		expect( onCreate ).toHaveBeenCalledTimes(1);
+
+	} )
 
 } );
 
