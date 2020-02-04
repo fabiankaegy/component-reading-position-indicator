@@ -1,25 +1,25 @@
-# 10up Reading Position Indicator component
+# 10up Reading Position component
 
 [![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status][cli-img]][cli-url]
 
-[cli-img]: https://travis-ci.org/10up/component-reading-position-indicator.svg?branch=master
-[cli-url]: https://travis-ci.org/10up/component-reading-position-indicator
+[cli-img]: https://travis-ci.org/10up/component-reading-position.svg?branch=master
+[cli-url]: https://travis-ci.org/10up/component-reading-position
 
 ## Installation
 
 ### NPM
-`npm install --save @10up/component-reading-position-indicator`
+`npm install --save @10up/component-reading-position`
 
 ### Standalone
-Clone this repo and import `reading-position-indicator.js` and `reading-position-indicator.css` from the `dist/` directory.
+Clone this repo and import `reading-position.js` and `reading-position.css` from the `dist/` directory.
 
 ## API
 
-This component accepts two arguments, the selector for the reading-position-indicator container and an object containing optional callbacks.
+This component accepts two arguments, the selector for the reading-position container and an object containing optional callbacks.
 
 ### Callbacks
 
-- `onCreate`: Called after the reading-position-indicator is initialized on page load
+- `onCreate`: Called after the reading-position is initialized on page load
 - `scrollStart`: Called when the scrollable are enters the visible area
 - `scrollEnd`: Called when the scrollable are leaves the visible area
 - `scrolling`: Called when on scroll events while the scrollable area is in the visible area
@@ -31,7 +31,7 @@ This component accepts two arguments, the selector for the reading-position-indi
 This is the markup template expected by the component.
 
 ```html
-<progress class="reading-position-indicator"></progress>
+<progress class="reading-position"></progress>
 ```
 
 ### CSS
@@ -39,21 +39,21 @@ This is the markup template expected by the component.
 The styles can be imported into your existing codebase by using PostCSS imports, or by including the standalone CSS file in your project.
 
 #### PostCSS Imports
-`@import '@10up/component-reading-position-indicator';`
+`@import '@10up/component-reading-position';`
 
 #### Standalone
-Include the `reading-position-indicator.css` file from the `dist/` directory.
+Include the `reading-position.css` file from the `dist/` directory.
 
 ### JavaScript
 
-Create a new instance by supplying the selector to use for the reading-position-indicator and an object containing any necessary callback functions.
+Create a new instance by supplying the selector to use for the reading-position and an object containing any necessary callback functions.
 
 #### NPM
 
 ```javascript
-import ReadingPositionIndicator from '@10up/component-reading-position-indicator';
+import ReadingPosition from '@10up/component-reading-position';
 
-new ReadingPositionIndicator( '.reading-position-indicator', {
+new ReadingPosition( '.reading-position', {
 	onCreate: function() {
 		console.log( 'onCreate callback' );
 	},
@@ -71,10 +71,10 @@ new ReadingPositionIndicator( '.reading-position-indicator', {
 
 #### Standalone
 
-Include the `reading-position-indicator.js` file from the `dist/` directory and access the component from the gobal `TenUp` object.
+Include the `reading-position.js` file from the `dist/` directory and access the component from the gobal `TenUp` object.
 
 ```javascript
-let myReadingPositionIndicator = new TenUp.readingPositionIndicator( '.reading-position-indicator', {
+let myReadingPosition = new TenUp.readingPosition( '.reading-position', {
 	onCreate: function() {
 		console.log( 'onCreate callback' );
 	},

@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @module @10up/ReadingPositionIndicator
+ * @module @10up/ReadingPosition
  *
  * @description
  *
@@ -10,7 +10,7 @@
  * @param {string} elementSelector progress element that should be used.
  * @param {Object} options Object of optional callbacks and settings.
  */
-export default class ReadingPositionIndicator {
+export default class ReadingPosition {
 
 	/**
 	 * constructor function
@@ -30,16 +30,16 @@ export default class ReadingPositionIndicator {
 		};
 
 		if ( ! elementSelector || 'string' !== typeof elementSelector ) {
-			console.error( '10up ReadingPositionIndicator: No target supplied. A valid target (readingPositionIndicator) must be used.' ); // eslint-disable-line
+			console.error( '10up ReadingPosition: No target supplied. A valid target (readingPosition) must be used.' ); // eslint-disable-line
 			return;
 		}
 
-		// ReadingPositionIndicator container
-		this.$readingPositionIndicator = document.querySelector( elementSelector );
+		// ReadingPosition container
+		this.$readingPosition = document.querySelector( elementSelector );
 
-		// Bail out if there's no readingPositionIndicator.
-		if ( ! this.$readingPositionIndicator  ) {
-			console.error( '10up ReadingPositionIndicator: Target not found. A valid target (readingPositionIndicator) must be used.'  ); // eslint-disable-line
+		// Bail out if there's no readingPosition.
+		if ( ! this.$readingPosition  ) {
+			console.error( '10up ReadingPosition: Target not found. A valid target (readingPosition) must be used.'  ); // eslint-disable-line
 			return;
 		}
 
@@ -53,10 +53,10 @@ export default class ReadingPositionIndicator {
 		this.$endElement = document.querySelector( this.settings.endElement );
 		this.inScrollArea = false;
 
-		this.setupReadingPositionIndicator( this.$readingPositionIndicator );
+		this.setupReadingPosition( this.$readingPosition );
 
 		/**
-		 * Called after the readingPositionIndicator is initialized on page load.
+		 * Called after the readingPosition is initialized on page load.
 		 * @callback onCreate
 		 */
 		if ( this.settings.onCreate && 'function' === typeof this.settings.onCreate ) {
@@ -70,7 +70,7 @@ export default class ReadingPositionIndicator {
 	 *
 	 * @param {HTMLElement} element
 	 */
-	setupReadingPositionIndicator( element ) {
+	setupReadingPosition( element ) {
 
 		// check to see wether its a progress element or has role progressbar
 		if ( ! 'PROGRESS' === element.nodeName || 'progressbar' === element.role ) {
@@ -111,7 +111,7 @@ export default class ReadingPositionIndicator {
 	handleScroll() {
 
 		// setting the value of the progress bar to the current percentage
-		this.$readingPositionIndicator.setAttribute( 'value', this.percentage );
+		this.$readingPosition.setAttribute( 'value', this.percentage );
 
 		// check wether is in scroll area based on the percentage
 		if ( 0 < this.percentage && 100 > this.percentage ) {

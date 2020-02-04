@@ -1,4 +1,4 @@
-.reading-position-indicator {
+.reading-position {
 	 /* Positioning */
   position: fixed;
   left: 0;
@@ -39,4 +39,4 @@ progress::-moz-progress-bar {
 }
 
 
-/*# sourceMappingURL=reading-position-indicator.css.map*/
+/*# sourceMappingURL=reading-position.css.map*/

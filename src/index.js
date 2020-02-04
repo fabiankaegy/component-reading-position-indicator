@@ -1,7 +1,7 @@
-import ReadingPositionIndicator from './reading-position-indicator';
+import ReadingPosition from './reading-position';
 
 if ( 'object' !== typeof window.TenUp ) {
 	window.TenUp = {};
 }
 
-window.TenUp.readingPositionIndicator = ReadingPositionIndicator;
+window.TenUp.readingPosition = ReadingPosition;

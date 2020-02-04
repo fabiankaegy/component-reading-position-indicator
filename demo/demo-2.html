@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
-		<title>10up Component Library | Reading Position Indicator</title>
+		<title>10up Component Library | Reading Position</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="../dist/reading-position-indicator.css" rel="stylesheet">
+		<link href="../dist/reading-position.css" rel="stylesheet">
 	</head>
 	<body>
 
-		<progress class="reading-position-indicator"></progress>
+		<progress class="reading-position"></progress>
 
 
-		<div id="percentage-indicator-box">
+		<div id="percentage-box">
 			<p>You are at:</p>
 			<span id="percentage">0%</span>
 		</div>
@@ -127,7 +127,7 @@
 
 		<style>
 
-		#percentage-indicator-box {
+		#percentage-box {
 			position: fixed;
 			width: 80px;
 			transform: translateX( -50% );
@@ -139,11 +139,11 @@
 			visibility: hidden;
 		}
 
-		#percentage-indicator-box * {
+		#percentage-box * {
 			margin: 0;
 		}
 
-		#percentage-indicator-box::before {
+		#percentage-box::before {
 			content: '';
 			position: absolute;
 			top: -5px;
@@ -159,37 +159,37 @@
 
 		</style>
 
-		<script src="../dist/reading-position-indicator.js"></script>
+		<script src="../dist/reading-position.js"></script>
 		<script type="text/javascript">
 
 			// getting the DOM Nodes
 			const percentageElement = document.getElementById('percentage');
-			const percentageIndicatorBoxElement = document.getElementById('percentage-indicator-box');
+			const percentageBoxElement = document.getElementById('percentage-box');
 
 			/**
 			 *	updates the percentage text and position of the box
 			 */
 			const updatePercentage = ( percentage ) => {
 				percentageElement.innerText = `${percentage.toFixed(0)}%`;
-				percentageIndicatorBoxElement.style.left = `${percentage}%`;
+				percentageBoxElement.style.left = `${percentage}%`;
 			}
 
 			/**
 			 * makes the box visible
 			 */
 			const showBox = () => {
-				percentageIndicatorBoxElement.style.visibility = 'visible';
+				percentageBoxElement.style.visibility = 'visible';
 			}
 
 			/**
 			 * hides the box
 			 */
 			const hideBox = () => {
-				percentageIndicatorBoxElement.style.visibility = 'hidden';
+				percentageBoxElement.style.visibility = 'hidden';
 			}
 
 			// initiates the reading position indicator
-			let myReadingPositionIndicator = new TenUp.readingPositionIndicator( '.reading-position-indicator', {
+			let myReadingPosition = new TenUp.readingPosition( '.reading-position', {
 				onCreate: function() {
 					console.log( 'onCreated' )
 				},

@@ -1,6 +1,6 @@
 @import 'assets/core.css';
 
-.reading-position-indicator {
+.reading-position {
 	 /* Positioning */
   position: fixed;
   left: 0;
