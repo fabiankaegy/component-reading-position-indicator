@@ -163,33 +163,33 @@
 		<script type="text/javascript">
 
 			// getting the DOM Nodes
-			const percentageElement = document.getElementById('percentage');
-			const percentageBoxElement = document.getElementById('percentage-box');
+			var percentageElement = document.getElementById('percentage');
+			var percentageBoxElement = document.getElementById('percentage-box');
 
 			/**
 			 *	updates the percentage text and position of the box
 			 */
-			const updatePercentage = ( percentage ) => {
-				percentageElement.innerText = `${percentage.toFixed(0)}%`;
-				percentageBoxElement.style.left = `${percentage}%`;
+			var updatePercentage = function( percentage ) {
+				percentageElement.innerText = percentage.toFixed(0) + '%';
+				percentageBoxElement.style.left = percentage + '%';
 			}
 
 			/**
 			 * makes the box visible
 			 */
-			const showBox = () => {
+			var showBox = function() {
 				percentageBoxElement.style.visibility = 'visible';
 			}
 
 			/**
 			 * hides the box
 			 */
-			const hideBox = () => {
+			var hideBox = function() {
 				percentageBoxElement.style.visibility = 'hidden';
 			}
 
 			// initiates the reading position indicator
-			let myReadingPosition = new TenUp.readingPosition( '.reading-position', {
+			var myReadingPosition = new TenUp.readingPosition( '.reading-position', {
 				onCreate: function() {
 					console.log( 'onCreated' )
 				},
