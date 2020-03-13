@@ -5,7 +5,7 @@
  *
  * @description
  *
- * Create an reading position indicator UI.
+ * Create a reading position indicator UI.
  *
  * @param {string} elementSelector progress element that should be used.
  * @param {Object} options Object of optional callbacks and settings.
@@ -14,8 +14,8 @@ export default class ReadingPosition {
 
 	/**
 	 * constructor function
-	 * @param elementSelector Ojbect
-	 * @param options Ojbect
+	 * @param elementSelector Object
+	 * @param options Object
 	 */
 	constructor( elementSelector, options = {} ) {
 
@@ -72,12 +72,12 @@ export default class ReadingPosition {
 	 */
 	setupReadingPosition( element ) {
 
-		// check to see wether its a progress element or has role progressbar
+		// check to see whether it is a progress element or has a role of progressbar
 		if ( ! 'PROGRESS' === element.nodeName || 'progressbar' === element.role ) {
 			element.setAttribute( 'role', 'progressbar' );
 		}
 
-		// set the maximum value to 100 because well be passing the value in as a percentage
+		// set the maximum value to 100 because we'll be passing the value in as a percentage
 		element.setAttribute( 'max', 100 );
 
 		// add event listeners for scroll, resize and orientationchange because they all affect the percentage
@@ -113,7 +113,7 @@ export default class ReadingPosition {
 		// setting the value of the progress bar to the current percentage
 		this.$readingPosition.setAttribute( 'value', this.percentage );
 
-		// check wether is in scroll area based on the percentage
+		// check whether is in scroll area based on the percentage
 		if ( 0 < this.percentage && 100 > this.percentage ) {
 
 			// call the callback for scrollStart only on transitioning into the scroll area
@@ -129,7 +129,7 @@ export default class ReadingPosition {
 			this.inScrollArea = true;
 		}
 
-		// check wether is outside scroll area based on the percentage
+		// check whether is outside scroll area based on the percentage
 		if ( 0 === this.percentage || 100 === this.percentage ) {
 
 			// call the callback for scrollEnd only on transitioning out of the scroll area
@@ -175,10 +175,10 @@ export default class ReadingPosition {
 		// initialize value with a default height of 0
 		let scrollAreaHeight = 0;
 
-		// check wether an endElement is present and a valid DOM Node
+		// check whether an endElement is present and a valid DOM Node
 		if ( this.$endElement && this.$endElement instanceof HTMLElement ) {
 
-			// setting the scroll area height to the top ofset of the end element
+			// setting the scroll area height to the top offset of the end element
 			scrollAreaHeight = this.$endElement.offsetTop;
 
 		} else {
@@ -204,10 +204,10 @@ export default class ReadingPosition {
 	 */
 	get min() {
 
-		// check wether an startElement is present and a valid DOM Node
+		// check whether an startElement is present and a valid DOM Node
 		if ( this.$startElement && this.$startElement instanceof HTMLElement ) {
 
-			// returning the top ofset of the element, making sure the value can't be below zero
+			// returning the top offset of the element, making sure the value can't be below zero
 			return Math.max( 0, this.$startElement.offsetTop );
 
 		}
@@ -217,12 +217,12 @@ export default class ReadingPosition {
 	}
 
 	/**
-	 * calculates the current percentage thats already been scrolled of the scroll area
+	 * calculates the current percentage that's already been scrolled of the scroll area
 	 */
 	get percentage() {
 
-		// setting the value making sure that it can't be below zero
-		const value = Math.max( 0, window.scrollY - this.min );
+		// setting the value making sure it can't be below zero
+		const value = Math.max( 0, window.pageYOffset - this.min );
 
 		// making sure the value can't be above 100
 		return Math.min( 100, value * 100 / this.max );
